@@ -44,14 +44,15 @@ import csv
 
 filepath = 'master_csv_test_utf8.csv'
 
-# df = pd.read_csv(filepath, sep='\t', quoting=csv.QUOTE_NONE)
-# print(df)
+df = pd.read_csv(filepath, sep='\t', quoting=csv.QUOTE_NONE)
+print(df.head())
 
 
 
 # Specify the path to your CSV file
 # file_path = 'your_file.csv'
 
+"""
 # Open the CSV file
 with open(filepath, newline='') as csvfile:
     csvreader = csv.reader(csvfile)
@@ -59,3 +60,4 @@ with open(filepath, newline='') as csvfile:
     # Print each row in the CSV file
     for row in csvreader:
         print(row)
+"""
