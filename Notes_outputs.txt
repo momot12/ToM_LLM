@@ -10,4 +10,10 @@ Temp = 0.7
 You will be asked a question. Please respond to it as accurately as possible without using many words. Sally and Anne are playing. Sally has a box and Anne has a basket, and there is a ball. Sally puts the ball in her box. Then Sally goes to play somewhere else. Anne takes the ball from Sally's box and she puts the ball in her own basket. Anne also goes to play somewhere else for a while. Then Sally returns. Where does Sally look for the ball? Why?
 Upon returning, Sally looks for the ball in her own box because she last saw it there.
 
-Temp = 0.0
+Temp = 0.1
+You will be asked a question. Please respond to it as accurately as possible without using many words. Sally and Anne are playing. Sally has a box and Anne has a basket, and there is a ball. Sally puts the ball in her box. Then Sally goes to play somewhere else. Anne takes the ball from Sally's box and she puts the ball in her own basket. Anne also goes to play somewhere else for a while. Then Sally returns. Where does Sally look for the ball? Why?
+Sally looks for the ball in her own basket because it is a common place for her to keep it.
+
+Temp = 0.0, do_sample=False
+You will be asked a question. Please respond to it as accurately as possible without using many words. Sally and Anne are playing. Sally has a box and Anne has a basket, and there is a ball. Sally puts the ball in her box. Then Sally goes to play somewhere else. Anne takes the ball from Sally's box and she puts the ball in her own basket. Anne also goes to play somewhere else for a while. Then Sally returns. Where does Sally look for the ball? Why?
+Sally looks for the ball in her own basket because it is the logical place to check when you lose an object.
