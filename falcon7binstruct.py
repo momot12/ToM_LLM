@@ -16,7 +16,7 @@ model = AutoModelForCausalLM.from_pretrained("tiiuae/falcon-7b-instruct", trust_
 
 
 model_name = "tiiuae/falcon-7b-instruct"
-# model.to(device)
+#model.to(device)
 
 # Function to generate text from a prompt
 def generate_response(prompt, model=model, tokenizer=tokenizer, device=device, max_length=200, temperature=0.0):
@@ -33,7 +33,7 @@ with open('narratives.jsonl', 'r', encoding='utf-8') as f:
     
 #print(json.dumps(data, indent=4))
 
-
+"""
 # generate answers and save in jsonl
 instruction_fix = 'You will be asked a question. Please respond to it as accurately as possible without using many words.'
 with open('falcon_answers.jsonl', 'w', encoding='utf-8') as out:
@@ -42,22 +42,24 @@ with open('falcon_answers.jsonl', 'w', encoding='utf-8') as out:
         narrative = entry["Narrative"]
         
         for q in range(len(questions)):
-            print(questions[q])
+            #print(questions[q])
             # only take non empty questions
-            if q != "":
-                print(q)
-            else:
-                print(f'its empty => {q}')
-                # prompt = instruction_fix+' '+narrative
+            if questions[q] != "":
+                print(f"not empty: {questions[q]}")
+                
+                prompt = instruction_fix+' '+narrative
+                print(prompt)
                 # generate 
-                # response = generate_response(prompt)
-        
+                response_full = generate_response(prompt)
+                
+                print(response_full)
+                
         # print(response)
-
+"""
 
 # Example prompt
-# instruction_fix = 'You will be asked a question. Please respond to it as accurately as possible without using many words.'
-# prompt =  "Sally and Anne are playing. Sally has a box and Anne has a basket, and there is a ball. Sally puts the ball in her box. Then Sally goes to play somewhere else. Anne takes the ball from Sally's box and she puts the ball in her own basket. Anne also goes to play somewhere else for a while. Then Sally returns. Where does Sally look for the ball? Why?"
-# response = generate_response(prompt)
-# print(response)
+instruction_fix = 'You will be asked a question. Please respond to it as accurately as possible without using many words.'
+prompt =  "Sally and Anne are playing. Sally has a box and Anne has a basket, and there is a ball. Sally puts the ball in her box. Then Sally goes to play somewhere else. Anne takes the ball from Sally's box and she puts the ball in her own basket. Anne also goes to play somewhere else for a while. Then Sally returns. Where does Sally look for the ball? Why?"
+response = generate_response(instruction_fix+' '+prompt)
+print(response)
 
