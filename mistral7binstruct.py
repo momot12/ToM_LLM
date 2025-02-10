@@ -14,7 +14,7 @@ tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.3", 
 model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.3", cache_dir=cache_dir, token=hf_token)
 
 
-def generate_text(prompt, model, tokenizer, device, max_new_tokens=200, temperature=0.7):
+def generate_text(prompt, model=model, tokenizer=tokenizer, device=device, max_new_tokens=200, temperature=0.0):
     """
     Generates text using the given model and tokenizer.
 
@@ -33,7 +33,7 @@ def generate_text(prompt, model, tokenizer, device, max_new_tokens=200, temperat
     tokens = tokenizer(prompt, return_tensors="pt").to(device)
 
     # Generate output
-    generated_ids = model.generate(**tokens, max_new_tokens=max_new_tokens, do_sample=True, temperature=temperature)
+    generated_ids = model.generate(**tokens, max_new_tokens=max_new_tokens, do_sample=False, temperature=temperature)
 
     # Decode the generated text
     result = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
@@ -42,5 +42,5 @@ def generate_text(prompt, model, tokenizer, device, max_new_tokens=200, temperat
 
 # Example usage
 prompt = "You will be asked a question. Please respond to it as accurately as possible without using many words. Sally and Anne are playing. Sally has a box and Anne has a basket, and there is a ball. Sally puts the ball in her box. Then Sally goes to play somewhere else. Anne takes the ball from Sally's box and she puts the ball in her own basket. Anne also goes to play somewhere else for a while. Then Sally returns. Where does Sally look for the ball? Why?"
-output = generate_text(prompt, model, tokenizer, device)
+output = generate_text(prompt)
 print(output)

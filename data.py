@@ -1,7 +1,7 @@
 import csv
 # import pandas as pd
 
-
+"""
 file = "master_csv_test_utf8.csv"
 
 # df = pd.read_csv(file)
@@ -50,4 +50,19 @@ with open(file_short, mode='r') as f:
     
     for row in reader:
         print(row)
+"""    
     
+import json
+
+# Input and output file paths
+csv_file = "Narrative_qs.csv"   # Replace with your CSV file
+jsonl_file = "output.jsonl"  # Output JSONL file
+
+# Read CSV and convert to JSONL
+with open(csv_file, mode="r", encoding="utf-8") as infile, open(jsonl_file, mode="w", encoding="utf-8") as outfile:
+    reader = csv.DictReader(infile)  # Read CSV as dictionaries
+    for row in reader:
+        json.dump(row, outfile)  # Convert to JSON and write
+        outfile.write("\n")  # Newline for JSONL format
+
+print(f"JSONL file saved as {jsonl_file}")
