@@ -17,11 +17,11 @@ model = AutoModelForCausalLM.from_pretrained("tiiuae/falcon-7b-instruct", trust_
 
 
 model_name = "tiiuae/falcon-7b-instruct"
-#model.to(device)
+model.to(device)
 
 # Function to generate text from a prompt
 def generate_response(prompt, model=model, tokenizer=tokenizer, device=device, max_length=200, temperature=0.01):
-    inputs = tokenizer(prompt, return_tensors="pt")#.to(device)  # Tokenize input and move to device
+    inputs = tokenizer(prompt, return_tensors="pt").to(device)  # Tokenize input and move to device
     with torch.no_grad():  # No gradient calculation for inference
         outputs = model.generate(**inputs, max_length=max_length, do_sample=True, temperature=temperature)#, top_p=0.9)
     
@@ -30,7 +30,7 @@ def generate_response(prompt, model=model, tokenizer=tokenizer, device=device, m
 
 
 # read narratives
-with open('Narratives_19.jsonl', 'r', encoding='utf-8') as f:
+with open('narratives_4.jsonl', 'r', encoding='utf-8') as f:
     data = json.load(f)
     
 #print(json.dumps(data, indent=4))
@@ -89,7 +89,7 @@ for entry in data:
     # collect all tests outputs
     all_entries.append(output_entry)   
 
-with open('falcon_answers_0.01.jsonl', 'w', encoding='utf-8') as out:
+with open('falcon_answers_0.01-2.jsonl', 'w', encoding='utf-8') as out:
     json.dump(all_entries, out, ensure_ascii=False)         
                 
 
