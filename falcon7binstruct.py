@@ -89,8 +89,19 @@ for entry in data:
     # collect all tests outputs
     all_entries.append(output_entry)   
 
-with open('falcon_answers_0.01-2.jsonl', 'w', encoding='utf-8') as out:
-    json.dump(all_entries, out, ensure_ascii=False)         
+
+filename = 'falcon_answers_0.01-2.jsonl'
+with open(filename, 'w', encoding='utf-8') as out:
+    out.write("[\n")  # Start the JSON array
+
+    for i, entry in enumerate(all_entries):
+        json_entry = json.dumps(entry, ensure_ascii=False)
+        if i < len(all_entries) - 1:
+            out.write(json_entry + ",\n")
+        else:
+            out.write(json_entry + "\n") 
+
+    out.write("]\n")       
                 
 
 # Example prompt

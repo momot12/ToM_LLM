@@ -53,7 +53,7 @@ with open(file_short, mode='r') as f:
 """    
     
 import json
-import pandas as pd
+# import pandas as pd
 
 """
 # Input and output file paths
@@ -68,7 +68,7 @@ with open(csv_file, mode="r", encoding="utf-8") as infile, open(jsonl_file, mode
         outfile.write("\n")  # Newline for JSONL format
 
 print(f"JSONL file saved as {jsonl_file}")
-"""
+
 
 jsonl_file = 'falcon_answers_0.01.jsonl'
 excel_file = 'falcon_answers_0.01_18.xlsx'
@@ -80,3 +80,17 @@ with open(jsonl_file, 'r') as f:
 
 df = pd.DataFrame(data)
 df.to_excel(excel_file, index=False)
+"""
+
+# Input JSON file (containing an array)
+input_file = 'falcon_answers_0.01-2.jsonl'  # Replace with your JSON file
+output_file = "falcon_answers_0.01_4.jsonl"  # Desired JSONL file
+
+# Read JSON array from the file
+with open(input_file, "r", encoding="utf-8") as file:
+    data = json.load(file)  # Parse the entire JSON array
+
+# Write each JSON object on a new line
+with open(output_file, "w", encoding="utf-8") as file:
+    for entry in data:
+        file.write(json.dumps(entry) + "\n") 
