@@ -104,7 +104,7 @@ for entry in data:
     all_entries.append(output_entry)   
 
 
-filename = 'mistral_answers_0.01_all.jsonl'
+filename = 'OUTPUTS/mistral_answers_0.01_all.jsonl'
 with open(filename, 'w', encoding='utf-8') as out:
     for i, entry in enumerate(all_entries):
         json_entry = json.dumps(entry, ensure_ascii=False)

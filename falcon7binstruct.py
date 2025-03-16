@@ -90,7 +90,7 @@ for entry in data:
     all_entries.append(output_entry)   
 
 
-filename = 'falcon_answers_0.01-2.jsonl'
+filename = 'OUTPUTS/falcon_answers_0.01_all.jsonl'
 with open(filename, 'w', encoding='utf-8') as out:
     out.write("[\n")  # Start the JSON array
 

@@ -114,5 +114,5 @@ falcon.close()
 
 
 # Convert lists into jsonl files
-jsonl_ing(filename='f1_mistral.jsonl', list_entries=F1_scores_mistral)
-jsonl_ing(filename='f1_falcon.jsonl', list_entries=F1_scores_falcon)
+jsonl_ing(filename='EVAL/f1_mistral.jsonl', list_entries=F1_scores_mistral)
+jsonl_ing(filename='EVAL/f1_falcon.jsonl', list_entries=F1_scores_falcon)
