@@ -27,6 +27,10 @@ Question Types:
 - [Falcon-7B-instruct](https://huggingface.co/tiiuae/falcon-7b-instruct)
 
 
+### Participants
+A total of 6 participants submitted their answers through this survey (closed now): [https://forms.gle/MFRq3gbHTfoXb2J87](https://forms.gle/MFRq3gbHTfoXb2J87) 
+
+
 ### Evaluation
 #### Scoring Tests Answers:
 Below are the scoring criteria. Each scenario can reach a maximum of 3 point which is then averaged to obtain a score between 0 and 1. A total of 22 points for 22 questions can be reached.
@@ -39,8 +43,7 @@ Below are the scoring criteria. Each scenario can reach a maximum of 3 point whi
 | 2     | Motivation question (e.g. *Why?*) | "Completely appropriate motivation that fully explained why the character in each scenario did or said something, or had a mental or emotional mind state" |
 
 #### F1_BERT
-[F1_BERT](https://huggingface.co/spaces/evaluate-metric/bertscore) is used to compare the similarity between the human answer with the model answers to explore the differences. 
-
+[F1_BERT](https://huggingface.co/spaces/evaluate-metric/bertscore) is used to compare the (cosine) similarity between the human answer with the model answers to explore the differences. 
 
 
 ### References
