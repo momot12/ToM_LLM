@@ -106,16 +106,10 @@ for entry in data:
 
 filename = 'mistral_answers_0.01_all.jsonl'
 with open(filename, 'w', encoding='utf-8') as out:
-    out.write("[\n")  # Start the JSON array
-
     for i, entry in enumerate(all_entries):
         json_entry = json.dumps(entry, ensure_ascii=False)
-        if i < len(all_entries) - 1:
-            out.write(json_entry + ",\n")
-        else:
-            out.write(json_entry + "\n") 
-
-    out.write("]\n")       
+        out.write(json_entry + "\n")
+   
                 
 
 

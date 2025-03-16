@@ -42,6 +42,9 @@ for h, m, f in zip(human, mistral, falcon):
                 _, _, F1_1_M = score([a1_mistral], [a1_human], lang="en", model_type="distilbert-base-uncased", rescale_with_baseline=True)
             if (a1_falcon != ""):
                 _, _, F1_1_F = score([a1_falcon], [a1_human], lang="en", model_type="distilbert-base-uncased", rescale_with_baseline=True)
+        else:
+            F1_1_M = None
+            F1_1_F = None
         
         # QA-2
         a2_human = data1['A_2'].lower()
@@ -53,6 +56,9 @@ for h, m, f in zip(human, mistral, falcon):
                 _, _, F1_2_M = score([a2_mistral], [a2_human], lang="en", model_type="distilbert-base-uncased", rescale_with_baseline=True)
             if (a1_falcon != ""):
                 _, _, F1_2_F = score([a2_falcon], [a2_human], lang="en", model_type="distilbert-base-uncased", rescale_with_baseline=True)
+        else:
+            F1_2_M = None
+            F1_2_F = None
         
         # QA-3
         a3_human = data1['A_3'].lower()
@@ -64,11 +70,17 @@ for h, m, f in zip(human, mistral, falcon):
                 _, _, F1_3_M = score([a3_mistral], [a3_human], lang="en", model_type="distilbert-base-uncased", rescale_with_baseline=True)
             if (a1_falcon != ""):
                 _, _, F1_3_F = score([a3_falcon], [a3_human], lang="en", model_type="distilbert-base-uncased", rescale_with_baseline=True)
+        else:
+            F1_3_M = None
+            F1_3_F = None
         
         
         F1_scores_mistral.append({'Index': data1["Index"], 'A_1': F1_1_M, 'A_2': F1_2_M, 'A_3': F1_3_M})
         F1_scores_falcon.append({'Index': data1["Index"], 'A_1': F1_1_F, 'A_2': F1_2_F, 'A_3': F1_3_F})
-
+        
+        print(F1_scores_mistral)
+        print(F1_scores_falcon)
+        break
 
     except json.JSONDecodeError as e:
         print(f"Error decoding a line: {e}")
