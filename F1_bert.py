@@ -112,7 +112,22 @@ human.close()
 mistral.close()
 falcon.close()
 
-
 # Convert lists into jsonl files
 jsonl_ing(filename='EVAL/f1_mistral.jsonl', list_entries=F1_scores_mistral)
 jsonl_ing(filename='EVAL/f1_falcon.jsonl', list_entries=F1_scores_falcon)
+
+# Over all average F1 scores
+def overall_avg_F1(jsonl_file):
+    Avg_F1_list = []
+    with open(jsonl_file) as f:
+        for line in f:
+            data = json.loads(line.strip()) 
+            Avg_F1_list.append(data["Average"])
+        #print(len(Avg_F1_list))
+        return round(sum(Avg_F1_list)/len(Avg_F1_list), 6)
+
+falcon = 'EVAL/f1_falcon.jsonl'
+mistral = 'EVAL/f1_mistral.jsonl'
+
+print(overall_avg_F1(falcon))  # 0.172273
+print(overall_avg_F1(mistral)) # 0.234545
